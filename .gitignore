@@ -1,0 +1,9 @@
+*.o
+*.a
+*.[568vq]
+[568vq].out
+gitwrap
+_test
+_testmain.go
+test.out
+build.out
