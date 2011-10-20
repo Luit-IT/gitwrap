@@ -4,6 +4,7 @@ import (
 	"flag"
 	"http"
 	"http/cgi"
+	"os"
 )
 
 var (
@@ -33,6 +34,11 @@ func main() {
 	http.Handle("/cgit.css", fs)
 	http.Handle("/cgit.png", fs)
 	http.Handle("/", cgiHandler)
+ 
+	// Everything seems to work: daemonize (close file handles)
+	os.Stdin.Close()
+	os.Stdout.Close()
+	os.Stderr.Close()
 
 	http.ListenAndServe("127.0.0.1:5000", nil)
 }
